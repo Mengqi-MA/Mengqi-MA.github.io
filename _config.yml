@@ -26,7 +26,9 @@ author:
   avatar           : "Mengqi-Ma-head.jpg"
   name             : "Mengqi (Mark) Ma"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio:
+  - "PhD Candidate in Mathematics & Statistics at The University of Melbourne."
+  - "Specializing in stochastic modelling of wireless communication systems."
   location         : "Melbourne, Victoria, Australia"
   employer         : "The University of Melbourne"
   uri              : # URL
@@ -41,7 +43,7 @@ author:
   orcid            : "https://orcid.org/yourorcidurl"
   semantic         : # URL
   ssrn             : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : # URL
   researchgate     : # URL
   scopus           : # URL
   zotero           : # URL
@@ -57,7 +59,7 @@ author:
 
   # Social media
   artstation       : # Username
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # URL
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
