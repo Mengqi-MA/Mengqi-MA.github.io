@@ -1,11 +1,15 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "Wominjeka to the homepage of Mengqi (Mark) Ma! "
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
+
+I am currently a PhD student at The University of Melbourne, under the supervison of [Prof. TBD](). My broader research interests lie in the stochastic modeling of physical systems such as wireless networks. My current focus is in the modeling of wireless sensor networks with stochastic geometry.
+
+I received my Bachelor's and Master's degree in Mathematics and Statistics, both from The University of Melbourne, under the supervision of [Prof. Aihua Xia](https://findanexpert.unimelb.edu.au/profile/15452-aihua-xia). My Master's thesis studies the performance of wireless localization with various types of random sensor networks, you can learn more about this project through this [manuscript]() and the [slides](), which is also available [here]().
 
 This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!
 
