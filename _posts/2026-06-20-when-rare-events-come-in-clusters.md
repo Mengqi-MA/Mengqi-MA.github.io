@@ -19,13 +19,13 @@ How can we describe this kind of burst mathematically? This post is about modell
 
 The Poisson distribution is a natural baseline for counting rare events over a fixed period of time. It has been used to model counts of events such as earthquakes, insurance claims, and equipment failures. In its simplest form, it assumes that events occur independently and that the average rate stays constant.
 
-That can be a useful first approximation. Suppose we observe `n` earthquakes across `m` comparable time intervals, such as weeks. A natural estimate of the average number of earthquakes per interval is
+That can be a useful first approximation. Suppose we observe $n$ earthquakes across $m$ comparable time intervals, such as weeks. A natural estimate of the average number of earthquakes per interval is
 
 $$
 \widehat{\lambda} = \frac{n}{m}.
 $$
 
-If `N` denotes the number of earthquakes in one such interval, the Poisson model says that the probability of observing exactly `k` earthquakes is
+If $N$ denotes the number of earthquakes in one such interval, the Poisson model says that the probability of observing exactly $k$ earthquakes is
 
 $$
 \Pr(N = k) = \frac{e^{-\lambda}\lambda^k}{k!}, \qquad k = 0, 1, 2, \ldots
@@ -48,7 +48,7 @@ $$
 W = X_1 + X_2 + \cdots + X_N,
 $$
 
-where `N` is the number of clusters and `X_1, X_2, ...` are their sizes. This distinction matters: two weeks might have the same total number of earthquakes, while one contains several unrelated events and the other is dominated by a single sequence of aftershocks.
+where $N$ is the number of clusters and $X_1, X_2, \ldots$ are their sizes. This distinction matters: two weeks might have the same total number of earthquakes, while one contains several unrelated events and the other is dominated by a single sequence of aftershocks.
 
 Compound Poisson models are useful whenever the data look like rare events with local bursts. Earthquake sequences are one example; insurance claims, network failures, and some reliability problems can have a similar structure.
 
@@ -56,7 +56,7 @@ Compound Poisson models are useful whenever the data look like rare events with 
 
 Choosing a plausible model is only half the job. The harder question is how close that model is to the process it represents. If the assumptions behind a compound Poisson model are not a reasonable description of the data, the resulting probabilities can be misleading.
 
-This is where Stein's method enters the picture. Rather than asking only whether a compound Poisson distribution is convenient, Stein's method provides a way to bound the difference between the real distribution of interest and the approximation. In plain language, it turns “this model seems reasonable” into a question with a quantitative answer: how much error might the approximation introduce?
+This is where Stein's method enters the picture. Rather than asking only whether a compound Poisson distribution is convenient, Stein's method provides a way to bound the difference between the real distribution of interest and the approximation. In plain language, it turns "this model seems reasonable" into a question with a quantitative answer: how much error might the approximation introduce?
 
 ## A small case study in South-West Australia
 
