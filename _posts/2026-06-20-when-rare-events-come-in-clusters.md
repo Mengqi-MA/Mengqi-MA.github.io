@@ -13,13 +13,25 @@ Earthquakes are rare events, but they do not always arrive one at a time. The 19
 
 This devastating sequence shows why a simple model that treats earthquakes as isolated events can miss something essential: rare events may come in clusters. [Wikipedia has further background on the 1976 Tangshan earthquake](https://en.wikipedia.org/wiki/1976_Tangshan_earthquake).
 
-This post is about modelling clustered event counts, not predicting individual earthquakes.
+How can we describe this kind of burst mathematically? This post is about modelling clustered event counts, not predicting individual earthquakes.
 
 ## A natural starting point: the Poisson model
 
 The Poisson distribution is a natural baseline for counting rare events over a fixed period of time. It has been used to model counts of events such as earthquakes, insurance claims, and equipment failures. In its simplest form, it assumes that events occur independently and that the average rate stays constant.
 
-That can be a useful first approximation. If we ask how many events occur in a week, month, or year, the Poisson model offers a compact way to translate an average event rate into a distribution for the total count.
+That can be a useful first approximation. Suppose we observe `n` earthquakes across `m` comparable time intervals, such as weeks. A natural estimate of the average number of earthquakes per interval is
+
+$$
+\widehat{\lambda} = \frac{n}{m}.
+$$
+
+If `N` denotes the number of earthquakes in one such interval, the Poisson model says that the probability of observing exactly `k` earthquakes is
+
+$$
+\Pr(N = k) = \frac{e^{-\lambda}\lambda^k}{k!}, \qquad k = 0, 1, 2, \ldots
+$$
+
+This gives a compact way to translate an average event rate into probabilities for different total counts.
 
 But the Tangshan sequence points to its limitation. A major earthquake can be followed by aftershocks, so one event may make nearby events in time and space more likely. When events arrive in bursts, treating every earthquake as an isolated arrival leaves out part of the mechanism we want to describe.
 
@@ -32,9 +44,9 @@ A compound Poisson model extends the ordinary Poisson idea. Rather than modellin
 
 The total number of events is the sum of the cluster sizes. In compact mathematical notation, we can write
 
-\[
+$$
 W = X_1 + X_2 + \cdots + X_N,
-\]
+$$
 
 where \(N\) is the number of clusters and \(X_1, X_2, \ldots\) are their sizes. This distinction matters: two weeks might have the same total number of earthquakes, while one contains several unrelated events and the other is dominated by a single sequence of aftershocks.
 
