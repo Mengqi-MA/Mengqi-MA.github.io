@@ -48,7 +48,7 @@ $$
 W = X_1 + X_2 + \cdots + X_N,
 $$
 
-where \(N\) is the number of clusters and \(X_1, X_2, \ldots\) are their sizes. This distinction matters: two weeks might have the same total number of earthquakes, while one contains several unrelated events and the other is dominated by a single sequence of aftershocks.
+where `N` is the number of clusters and `X_1, X_2, ...` are their sizes. This distinction matters: two weeks might have the same total number of earthquakes, while one contains several unrelated events and the other is dominated by a single sequence of aftershocks.
 
 Compound Poisson models are useful whenever the data look like rare events with local bursts. Earthquake sequences are one example; insurance claims, network failures, and some reliability problems can have a similar structure.
 
