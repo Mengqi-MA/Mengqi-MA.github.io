@@ -42,32 +42,48 @@ A compound Poisson model extends the ordinary Poisson idea. Rather than modellin
 1. How many clusters occur in a given period?
 2. How many events occur within each cluster?
 
+Suppose we observe $c$ clusters across $m$ comparable time intervals. We can estimate the average number of clusters per interval by
+
+$$
+\widehat{\lambda} = \frac{c}{m}.
+$$
+
+We also need to estimate the cluster-size distribution. If $c_j$ of the observed clusters have size $j$, then a natural estimate of the probability that a cluster has size $j$ is
+
+$$
+\widehat{\mu}_j = \frac{c_j}{c}.
+$$
+
 The total number of events is the sum of the cluster sizes. In compact mathematical notation, we can write
 
 $$
 W = X_1 + X_2 + \cdots + X_N,
 $$
 
-where $N$ is the number of clusters and $X_1, X_2, \ldots$ are their sizes. This distinction matters: two weeks might have the same total number of earthquakes, while one contains several unrelated events and the other is dominated by a single sequence of aftershocks.
+where $N$ is the number of clusters and $X_1, X_2, \ldots$ are their sizes. Once $\lambda$ and the cluster-size distribution $\mu$ have been estimated, the probability of observing exactly $k$ events can be calculated as
+
+$$
+\Pr(W = k) = e^{-\lambda}\sum_{r=0}^{\infty} \frac{\lambda^r}{r!}\Pr(X_1 + \cdots + X_r = k).
+$$
+
+This formula averages over the possible number of clusters $r$ and the possible sizes of those clusters. For $r = 0$, the sum is zero, so this term contributes only when $k = 0$. The model is more flexible than the ordinary Poisson formula because it allows a single cluster to contribute more than one event. Two weeks might therefore have the same total number of earthquakes, while one contains several unrelated events and the other is dominated by a single sequence of aftershocks.
 
 Compound Poisson models are useful whenever the data look like rare events with local bursts. Earthquake sequences are one example; insurance claims, network failures, and some reliability problems can have a similar structure.
 
-## A model is only useful if we know when to trust it
+## How close is the approximation?
 
 Choosing a plausible model is only half the job. The harder question is how close that model is to the process it represents. If the assumptions behind a compound Poisson model are not a reasonable description of the data, the resulting probabilities can be misleading.
 
-This is where Stein's method enters the picture. Rather than asking only whether a compound Poisson distribution is convenient, Stein's method provides a way to bound the difference between the real distribution of interest and the approximation. In plain language, it turns "this model seems reasonable" into a question with a quantitative answer: how much error might the approximation introduce?
+One way to make this question precise is the total variation distance. If $W$ is the true event count and $Z$ is the count predicted by the compound Poisson model, then
 
-## A small case study in South-West Australia
+$$
+d_{\mathrm{TV}}\bigl(\mathcal{L}(W), \mathcal{L}(Z)\bigr)
+= \sup_{A \subseteq \mathbb{Z}_{\geq 0}}
+\left|\Pr(W \in A) - \Pr(Z \in A)\right|.
+$$
 
-In this project, I explored compound Poisson approximation using earthquake data from South-West Australia from 2014 to 2015. The goal was to approximate the distribution of the total number of earthquakes in a week.
+Here, $\mathcal{L}(W)$ means the probability distribution of $W$. The total variation distance considers every possible collection of event counts $A$ and records the largest difference between the two probabilities. A small value means that the model assigns similar probabilities to the true process across all events we might care about.
 
-The key modelling decision was to treat events that occurred nearby in time and space as potentially related. These local relationships formed the clusters. I then used two approaches to compound Poisson approximation and applied Stein's method to obtain error bounds for the resulting models.
+This is where Stein's method enters the picture. Rather than calculating the unknown distribution of $W$ directly, Stein's method uses a characterising equation for the target distribution $Z$. It rewrites the difference between the two distributions in a form that can be bounded using what we do know about event rates, cluster sizes, and local dependence.
 
-This was a deliberately small case study, with limited historical data and simplifying assumptions. Its value was not a ready-made earthquake forecast. Instead, it illustrated a more general modelling lesson: a useful approximation should reflect the structure we see in the data, and it should come with an honest assessment of its uncertainty.
-
-## What I took away
-
-This project changed the way I think about probability models. A good model is not simply one that produces a number. It makes its assumptions visible, explains what features of the data it captures, and tells us when we should be cautious.
-
-For rare events that come in clusters, compound Poisson approximation provides one such framework. It keeps the simplicity of Poisson modelling while making room for the fact that, in the real world, events often arrive together.
+In short, Stein's method turns "the compound Poisson model seems plausible" into an explicit upper bound on the total variation distance. It gives us a way to judge not only whether a model is convenient, but whether it is accurate enough for the question we want to answer.
