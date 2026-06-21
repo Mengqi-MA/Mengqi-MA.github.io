@@ -9,6 +9,6 @@ location: "Melbourne, Australia"
 excerpt: "Develop course materials, lead tutorials, and provide feedback on assignments and examinations."
 ---
 
-**From July 2026**
+**July 2026-present**
 
 I develop course materials, lead tutorials, and provide feedback on assignments and examinations for quantitative methods and business decision subjects.
