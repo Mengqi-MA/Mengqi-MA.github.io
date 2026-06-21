@@ -84,6 +84,16 @@ $$
 
 Here, $\mathcal{L}(W)$ means the probability distribution of $W$. The total variation distance considers every possible collection of event counts $A$ and records the largest difference between the two probabilities. A small value means that the model assigns similar probabilities to the true process across all events we might care about.
 
-This is where Stein's method enters the picture. Rather than calculating the unknown distribution of $W$ directly, Stein's method uses a characterising equation for the target distribution $Z$. It rewrites the difference between the two distributions in a form that can be bounded using what we do know about event rates, cluster sizes, and local dependence.
+Here is a direct way to use this distance. Suppose we want the probability of observing exactly $k$ earthquakes in one time interval. The compound Poisson model gives the approximation $\Pr(Z = k)$. Since the single value $k$ is one possible set $A$, total variation distance gives
 
-In short, Stein's method turns "the compound Poisson model seems plausible" into an explicit upper bound on the total variation distance. It gives us a way to judge not only whether a model is convenient, but whether it is accurate enough for the question we want to answer.
+$$
+\Pr(Z = k) - d_{\mathrm{TV}}\bigl(\mathcal{L}(W), \mathcal{L}(Z)\bigr)
+\leq \Pr(W = k) \leq
+\Pr(Z = k) + d_{\mathrm{TV}}\bigl(\mathcal{L}(W), \mathcal{L}(Z)\bigr).
+$$
+
+In other words, the model probability comes with an error margin. If the total variation distance is small, then $\Pr(Z = k)$ is close to the unknown true probability $\Pr(W = k)$. The same reasoning applies to questions such as the probability of at least one earthquake in the interval.
+
+The remaining problem is to evaluate, or at least bound, the total variation distance. This is where Stein's method enters the picture. Rather than calculating the unknown distribution of $W$ directly, Stein's method uses a characterising equation for the target distribution $Z$. It rewrites the difference between the two distributions in a form that can be bounded using what we do know about event rates, cluster sizes, and local dependence.
+
+In short, Stein's method turns "the compound Poisson model seems plausible" into an explicit upper bound on total variation distance. It gives us a way to judge not only whether a model is convenient, but whether it is accurate enough for the question we want to answer.
