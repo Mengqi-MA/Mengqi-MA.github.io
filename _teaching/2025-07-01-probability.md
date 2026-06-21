@@ -1,5 +1,5 @@
 ---
-title: "Teaching Assistant - Probability"
+title: "Teaching Assistant - Probability and Statistics"
 collection: teaching
 type: "Undergraduate and graduate teaching"
 permalink: /teaching/probability/
